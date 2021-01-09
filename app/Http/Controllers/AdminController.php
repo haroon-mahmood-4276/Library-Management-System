@@ -143,7 +143,7 @@ class AdminController extends Controller
             $LMSBooksData->Book_ID = $Req->txtBookID;
             $LMSBooksData->Book_Title = $Req->txtBookTitle;
             $LMSBooksData->Book_Author = $Req->txtBookAuthor;
-            $LMSBooksData->Book_PublisheYear = $Req->txtBookPublishedYear;
+            $LMSBooksData->Book_PublisheYear = date("Y", strtotime($Req->txtBookPublishedYear));
 
             if ($LMSBooksData->save()) {
                 if($BooksCount > 10){
