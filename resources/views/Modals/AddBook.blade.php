@@ -2,8 +2,8 @@
     aria-labelledby="AddBookModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
-            <form method="POST" action="/admin/books/add" name="addBook">
-                @csrf
+           <form method="POST" action="/admin/books/add" name="addBook">
+            @csrf
                 <!-- Modal Header -->
                 <div class="modal-header bg-UNi">
                     <h4 class="modal-title mr-auto">Add Book</h4>
@@ -26,7 +26,7 @@
                                         <label for="txtBookID">Book ID</label>
                                         <input type="text" class="form-control" id="txtBookID" name="txtBookID"
                                             maxlength="50" placeholder="Book ID" value="" required>
-                                        <input type="hidden" id="modalworking" name="modalworking" value="">
+                                            <input type="hidden" id="modalworking" name="modalworking" value="">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
@@ -43,9 +43,8 @@
 
                                     <div class="col-md-12 mb-3">
                                         <label for="txtBookPublishedYear">Published Year</label>
-                                        <input type="date" class="form-control" id="txtBookPublishedYear"
-                                            name="txtBookPublishedYear" placeholder="Book Abbrivation" value=""
-                                            required>
+                                        <input type="date" class="form-control" id="txtBookPublishedYear" name="txtBookPublishedYear"
+                                            placeholder="Book Abbrivation" value="" required>
                                     </div>
                                 </div>
                             </div>

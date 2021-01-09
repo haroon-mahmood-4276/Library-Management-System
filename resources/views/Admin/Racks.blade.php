@@ -9,21 +9,6 @@
     @endphp
     <div class="container my-4 text-center">
 
-        {{-- <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 mb-3">
-                <div class="input-group m-2 border rounded-pill p-1 searchbar"
-                    style="border-radius: 10px; border: 2px solid #224172 !important;">
-                    <div class="input-group-prepend border-0">
-                        <button id="button-addon4" type="button" class="btn btn-link"><i class="fab fa-searchengin"
-                                style="color: #224172;"></i></button>
-                    </div>
-                    <input type="search" placeholder="What're you searching for?" id="myInput" name="myInput"
-                        aria-describedby="button-addon4" class="form-control bg-none border-0">
-                </div>
-            </div>
-        </div> --}}
-
         @if (session('Msg'))
             <div class="alert alert-{{ session('Msg.MsgType') }} alert-dismissible fade show" role="alert">
                 <strong>{{ session('Msg.MsgD') }}
@@ -63,7 +48,7 @@
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <button type="submit" onclick="return confirm('Are you sure?')"
-                                            class="btn  btn-outline-danger PDelete"><i class="far fa-trash-alt"
+                                            class="btn btn-outline-danger PDelete"><i class="far fa-trash-alt"
                                                 aria-hidden="true"></i></button>
                                     </form>
                                 </td>

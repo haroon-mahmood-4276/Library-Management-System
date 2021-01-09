@@ -1,6 +1,6 @@
-<div class="modal fade bd-example-modal-lg" id="AddRackModal" tabindex="-1" role="dialog" data-backdrop="static"
+<div class="modal fade" id="AddRackModal" tabindex="-1" role="dialog" data-backdrop="static"
     aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
             <form method="POST" action="/admin/racks/add" name="addBook">
                 @csrf
@@ -9,7 +9,6 @@
                     <h4 class="modal-title mr-auto">Add Racks</h4>
                     <button type="button" class="ml-2 btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
-                <!-- <div class="divider"></div> -->
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div>

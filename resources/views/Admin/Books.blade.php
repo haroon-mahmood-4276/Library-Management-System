@@ -65,7 +65,7 @@
                                         data-target="#AddBookModal" data-bookid="{{ $BooksRow->Book_ID }}"
                                         data-booktitle="{{ $BooksRow->Book_Title }}"
                                         data-bookauthor="{{ $BooksRow->Book_Author }}"
-                                        data-modalworking="Update"><i class="far fa-trash-alt"></i></button>
+                                        data-modalworking="Update"><i class="fas fa-pen-fancy"></i></button>
                                 </td>
                             </tr>
                         @endforeach

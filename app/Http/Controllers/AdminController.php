@@ -54,33 +54,24 @@ class AdminController extends Controller
     public function AddRacks(Request $Req)
     {
 
-        // return $Req->input();
-        $Data = LMSBooks::where(['Book_ID' => $Req->txtBookID])->first();
-        if ($Data) {
+        $LMSRacksData = new LMSRacks();
+
+        $LMSRacksData->Rack_Name = $Req->txtRackName;
+
+        if ($LMSRacksData->save()) {
             $Req->session()->put('Msg', [
-                'MsgType' => 'info',
-                'MsgD' => 'This Rack is already exists.'
+
+                'MsgType' => 'success',
+                'MsgD' => 'Data is successfully saved.'
             ]);
         } else {
+            $Req->session()->put('Msg', [
 
-            $LMSRacksData = new LMSRacks();
-
-            $LMSRacksData->Rack_Name = $Req->txtRackName;
-
-            if ($LMSRacksData->save()) {
-                $Req->session()->put('Msg', [
-
-                    'MsgType' => 'success',
-                    'MsgD' => 'Data is successfully saved.'
-                ]);
-            } else {
-                $Req->session()->put('Msg', [
-
-                    'MsgType' => 'danger',
-                    'MsgD' => 'Data could not saved'
-                ]);
-            }
+                'MsgType' => 'danger',
+                'MsgD' => 'Data could not saved'
+            ]);
         }
+
         return redirect('/admin/books');
     }
 
