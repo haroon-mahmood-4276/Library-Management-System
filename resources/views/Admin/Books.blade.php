@@ -32,8 +32,10 @@
                         <th scope="col">Book Title</th>
                         <th scope="col">Book Author</th>
                         <th scope="col">Published Year</th>
-                        <th scope="col" style="width: 10%;" class="text-center"><a href=" #" id="AddBook"><i
+                        <th scope="col" style="width: 10%;" class="text-center"><a href="#" data-rackid=" " data-bookid=" "
+                                data-booktitle=" " data-bookauthor=" " data-bookpublisheyear="mm/dd/yyyy" id="AddBook"><i
                                     class="fas fa-plus" style="color: white" aria-hidden="true"></i></a>
+
                         </th>
                     </tr>
                 </thead>
@@ -60,6 +62,13 @@
                                             class="btn  btn-outline-danger PDelete"><i class="far fa-trash-alt"
                                                 aria-hidden="true"></i></button>
                                     </form>
+                                    {{-- <a href="#" data-rackid="3" data-bookid="{{ $BooksRow->Book_ID }}"
+                                        data-booktitle="{{ $BooksRow->Book_Title }}"
+                                        data-bookauthor="{{ $BooksRow->Book_Author }}"
+                                        data-bookpublisheyear="{{ $BooksRow->Book_PublisheYear }}"
+                                        class="btn float-right btn-UNi editbutton"><i class="far fa-trash-alt"
+                                            aria-hidden="true"></i></button> --}}
+
                                 </td>
                             </tr>
                         @endforeach

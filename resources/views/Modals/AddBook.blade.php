@@ -43,7 +43,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="txtBookPublishedYear">Published Year</label>
                                         <input type="date" class="form-control" id="txtBookPublishedYear" name="txtBookPublishedYear"
-                                            placeholder="Book Abbrivation" value="" maxlength="50" required>
+                                            placeholder="Book Abbrivation" value="" required>
                                     </div>
                                 </div>
                             </div>

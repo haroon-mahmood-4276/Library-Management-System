@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#AddBook").click(function () {
+    $("#AddBook").click(function (event) {
         $("#AddBookModal").modal();
         GetRacks();
     });
@@ -22,17 +22,9 @@ $(document).ready(function () {
                 for (let index = 0; index < response.length; index++) {
                     Data += '<option value="' + response[index].Rack_ID + '">' + response[index].Rack_Name + '</option>';
                 }
+                console.log("here");
                 $('#cbRacks').html(Data);
             }
         });
     };
-
-    $("#myInput").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-        });
-    });
-
-
 });
