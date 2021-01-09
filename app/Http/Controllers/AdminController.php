@@ -128,7 +128,7 @@ class AdminController extends Controller
     {
 
         $Data = LMSBooks::where(['Book_ID' => $Req->txtBookID])->first();
-        if ($Data) {
+        if ($Data && $Req->modalworking == "") {
             $Req->session()->put('Msg', [
                 'MsgType' => 'info',
                 'MsgD' => 'This Book is already exists.'
@@ -137,33 +137,37 @@ class AdminController extends Controller
 
             $BooksCount = LMSBooks::where(['Book_RackID' => $Req->cbRacks])->count();
 
-            $LMSBooksData = new LMSBooks;
+            if ($Req->modalworking == "Update") {
+                $RtnValue = LMSBooks::where(['Book_ID' => $Req->txtBookID])->update(['Book_RackID' => $Req->cbRacks, 'Book_ID' => $Req->txtBookID, 'Book_Title' => $Req->txtBookTitle, 'Book_Author' => $Req->txtBookAuthor, 'Book_PublisheYear' => date("Y", strtotime($Req->txtBookPublishedYear))]);
+            } else {
 
-            $LMSBooksData->Book_RackID = $Req->cbRacks;
-            $LMSBooksData->Book_ID = $Req->txtBookID;
-            $LMSBooksData->Book_Title = $Req->txtBookTitle;
-            $LMSBooksData->Book_Author = $Req->txtBookAuthor;
-            $LMSBooksData->Book_PublisheYear = date("Y", strtotime($Req->txtBookPublishedYear));
+                $LMSBooksData = new LMSBooks;
 
-            if ($LMSBooksData->save()) {
-                if($BooksCount > 10){
+                $LMSBooksData->Book_RackID = $Req->cbRacks;
+                $LMSBooksData->Book_ID = $Req->txtBookID;
+                $LMSBooksData->Book_Title = $Req->txtBookTitle;
+                $LMSBooksData->Book_Author = $Req->txtBookAuthor;
+                $LMSBooksData->Book_PublisheYear = date("Y", strtotime($Req->txtBookPublishedYear));
+                $RtnValue = $LMSBooksData->save();
+            }
+
+            if ($RtnValue) {
+                if ($BooksCount > 10) {
                     $Req->session()->put('Msg', [
                         'MsgType' => 'warning',
                         'MsgD' => 'Data is successfully saved. But the number of books are greater than 10'
                     ]);
-                }
-                else{
+                } else {
                     $Req->session()->put('Msg', [
                         'MsgType' => 'success',
                         'MsgD' => 'Data is successfully saved.'
                     ]);
                 }
-
             } else {
                 $Req->session()->put('Msg', [
 
                     'MsgType' => 'danger',
-                    'MsgD' => 'Data could saved'
+                    'MsgD' => 'Data could not saved'
                 ]);
             }
         }

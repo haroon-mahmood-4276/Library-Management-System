@@ -1,6 +1,19 @@
 $(document).ready(function () {
 
     $("#AddBook").click(function (event) {
+
+        var button = $(event.relatedTarget)
+        var txtBookID = " "
+        var txtBookTitle = " "
+        var txtBookAuthor = " "
+        var modalworking = " "
+
+        var modal = $(this)
+        modal.find('.modal-body #txtBookID').val(txtBookID)
+        modal.find('.modal-body #txtBookTitle').val(txtBookTitle)
+        modal.find('.modal-body #txtBookAuthor').val(txtBookAuthor)
+        modal.find('.modal-body #modalworking').val(modalworking)
+
         $("#AddBookModal").modal();
         GetRacks();
     });
@@ -27,4 +40,22 @@ $(document).ready(function () {
             }
         });
     };
+
+
+    $('#AddBookModal').on('show.bs.modal', function (event) {
+        GetRacks();
+        var button = $(event.relatedTarget)
+        var txtBookID = button.data('bookid')
+        var txtBookTitle = button.data('booktitle')
+        var txtBookAuthor = button.data('bookauthor')
+        var modalworking = button.data('modalworking')
+
+        var modal = $(this)
+        modal.find('.modal-body #txtBookID').val(txtBookID)
+        modal.find('.modal-body #txtBookTitle').val(txtBookTitle)
+        modal.find('.modal-body #txtBookAuthor').val(txtBookAuthor)
+        modal.find('.modal-body #modalworking').val(modalworking)
+        console.log(modalworking)
+      })
+
 });
