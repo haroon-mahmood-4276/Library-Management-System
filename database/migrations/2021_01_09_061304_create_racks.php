@@ -14,9 +14,9 @@ class CreateRacks extends Migration
      */
     public function up()
     {
-        Schema::create('lms_racks', function (Blueprint $table) {
-            $table->increments('Rack_ID');
-            $table->string('Rack_Name');
+        Schema::create('racks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

@@ -16,25 +16,22 @@ class BookData extends Seeder
     {
         DB::table('lms_books')->insert([
             [
-                'Book_RackID' => '1',
-                'Book_ID' => 'Book1',
-                'Book_Title' => 'XYZ',
-                'Book_Author' => 'Me',
-                'Book_PublisheYear' => '2020',
+                'rack_id' => '1',
+                'title' => 'XYZ',
+                'author' => 'Me',
+                'published_year' => '2020',
             ],
             [
-                'Book_RackID' => '2',
-                'Book_ID' => 'Book2',
-                'Book_Title' => 'XYZ',
-                'Book_Author' => 'Me',
-                'Book_PublisheYear' => '2020',
+                'rack_id' => '2',
+                'title' => 'XYZ',
+                'author' => 'Me',
+                'published_year' => '2020',
             ],
             [
-                'Book_RackID' => '6',
-                'Book_ID' => 'Book3',
-                'Book_Title' => 'XYZ',
-                'Book_Author' => 'Me',
-                'Book_PublisheYear' => '2020',
+                'rack_id' => '6',
+                'title' => 'XYZ',
+                'author' => 'Me',
+                'published_year' => '2020',
             ],
         ]);
     }

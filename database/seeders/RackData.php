@@ -14,36 +14,36 @@ class RackData extends Seeder
      */
     public function run()
     {
-        DB::table('lms_racks')->insert([
+        DB::table('racks')->insert([
             [
-                'Rack_Name' => 'A1',
+                'name' => 'A1',
             ],
             [
-                'Rack_Name' => 'A2',
+                'name' => 'A2',
             ],
             [
-                'Rack_Name' => 'A3',
+                'name' => 'A3',
             ],
             [
-                'Rack_Name' => 'A4',
+                'name' => 'A4',
             ],
             [
-                'Rack_Name' => 'A5',
+                'name' => 'A5',
             ],
             [
-                'Rack_Name' => 'B1',
+                'name' => 'B1',
             ],
             [
-                'Rack_Name' => 'B2',
+                'name' => 'B2',
             ],
             [
-                'Rack_Name' => 'B3',
+                'name' => 'B3',
             ],
             [
-                'Rack_Name' => 'B4',
+                'name' => 'B4',
             ],
             [
-                'Rack_Name' => 'B5',
+                'name' => 'B5',
             ]
         ]);
     }

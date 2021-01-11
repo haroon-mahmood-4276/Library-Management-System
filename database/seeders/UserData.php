@@ -15,20 +15,20 @@ class UserData extends Seeder
      */
     public function run()
     {
-        DB::table('lms_users')->insert([
+        DB::table('users')->insert([
             [
-                'User_Email' => 'admin@lms.com',
-                'User_Password' => Hash::make('123456'),
-                'User_FirstName' => 'Haroon',
-                'User_LastName' => 'Mahmood',
-                'User_Role' => 'Admin',
+                'email' => 'admin@lms.com',
+                'passowrd' => Hash::make('123456'),
+                'first_name' => 'Haroon',
+                'last_name' => 'Mahmood',
+                'user_role' => 'Admin',
             ],
             [
-                'User_Email' => 'user@lms.com',
-                'User_Password' => Hash::make('123456'),
-                'User_FirstName' => 'Haroon',
-                'User_LastName' => 'Mahmood',
-                'User_Role' => 'User',
+                'email' => 'user@lms.com',
+                'passowrd' => Hash::make('123456'),
+                'first_name' => 'Haroon',
+                'last_name' => 'Mahmood',
+                'user_role' => 'User',
             ]
         ]);
     }
