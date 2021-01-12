@@ -21,27 +21,17 @@ Route::get('/', function () {
 
 Route::view('/admin/login', 'admin.login');
 Route::post('/admin/login', 'AdminController@Login');
-Route::get('/admin/logout', function () {
+Route::get('/logout', function () {
     Session()->forget('Data');
     return redirect('/');
 });
- Route::get('/admin/dashboard', 'AdminController@Dashboard');
-// Route::get('/admin/racks', [AdminController::class, 'RacksList']);
-// Route::delete('/admin/racks/delete/{id}', [AdminController::class, 'DeleteRacks']);
+Route::get('/admin/dashboard', 'AdminController@Dashboard');
 
-// Route::get('/admin/books', [AdminController::class, 'BooksList']);
-// Route::delete('/admin/books/delete/{id}', [AdminController::class, 'DeleteBooks']);
-// Route::post('/admin/books/add', [AdminController::class, 'AddBook']);
+Route::view('/user/login', 'user.login');
+Route::post('/user/login', 'UserController@Login');
 
-
-// Route::view('/user/login', 'User.Login');
-// Route::post('/user/login', [UserController::class, 'Login']);
-// Route::get('/user/logout', function () {
-//     Session()->forget('Data');
-//     return redirect('/');
-// });
-// Route::get('/user/books', [UserController::class, 'Books']);
-// Route::get('/user/books/search', [UserController::class, 'SearchBooks']);
+Route::get('/user/books', 'UserController@Books');
+Route::get('/user/books/search', 'UserController@SearchBooks');
 
 Route::resource('racks', 'RackController');
 Route::resource('books', 'BookController');

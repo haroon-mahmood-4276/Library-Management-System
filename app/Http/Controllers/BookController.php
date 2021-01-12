@@ -15,8 +15,6 @@ class BookController extends Controller
      */
     public function index()
     {
-
-
         $bookData = Book::select('id', 'title', 'author', 'published_year');
         $bookData = $bookData->addSelect([
             'rack_name' => Rack::select('name')->whereColumn('id', '=', 'books.rack_id')
@@ -52,23 +50,34 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $Book = new Book;
-        $Book->rack_id = $request->cbRacks;
-        $Book->title = $request->txtBookTitle;
-        $Book->author = $request->txtBookAuthor;
-        $Book->published_year = date("Y", strtotime($request->txtBookPublishedYear));
+        $booksCount = Book::where(['rack_id' => $request->cbRacks])->count();
 
-        if ($Book->save()) {
-            session()->flash('Msg', [
-                'Type' => 'success',
-                'Text' => 'Data is successfully saved.'
-            ]);
-        } else {
+        if($booksCount <= 10){
+            $Book = new Book;
+            $Book->rack_id = $request->cbRacks;
+            $Book->title = $request->txtBookTitle;
+            $Book->author = $request->txtBookAuthor;
+            $Book->published_year = date("Y", strtotime($request->txtBookPublishedYear));
+
+            if ($Book->save()) {
+                session()->flash('Msg', [
+                    'Type' => 'success',
+                    'Text' => 'Data is successfully saved.'
+                ]);
+            } else {
+                session()->flash('Msg', [
+                    'Type' => 'danger',
+                    'Text' => 'Data could not saved.'
+                ]);
+            }
+        }
+        else{
             session()->flash('Msg', [
                 'Type' => 'danger',
-                'Text' => 'Data could not saved.'
+                'Text' => 'Cannot add more than 10 books in this rack.'
             ]);
         }
+
 
         return redirect('books');
     }
