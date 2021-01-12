@@ -1,4 +1,4 @@
-@extends('Shared.Layout')
+@extends('shared.layout')
 
 @section('PageTitle', 'Dashboard')
 

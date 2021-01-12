@@ -12,7 +12,7 @@
 
         @if (session('Msg'))
             <div class="alert alert-{{ session('Msg.MsgType') }} alert-dismissible fade show" role="alert">
-                <strong>{{ session('Msg.MsgD') }}
+                <strong>{{ session('Msg.MsgText') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -33,9 +33,7 @@
                         <th scope="col">Book Author</th>
                         <th scope="col">Published Year</th>
                         <th scope="col" style="width: 10%;" class="text-center"><a href="#" id="AddBook"><i
-                                    class="fas fa-plus" style="color: white" aria-hidden="true"></i></a>
-
-                        </th>
+                                    class="fas fa-plus" style="color: white" aria-hidden="true"></i></a></th>
                     </tr>
                 </thead>
 

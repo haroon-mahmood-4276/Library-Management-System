@@ -14,7 +14,7 @@ class BookData extends Seeder
      */
     public function run()
     {
-        DB::table('lms_books')->insert([
+        DB::table('books')->insert([
             [
                 'rack_id' => '1',
                 'title' => 'XYZ',

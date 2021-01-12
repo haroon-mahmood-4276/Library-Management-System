@@ -82,7 +82,7 @@ header,
 /* End of Card */
 
 table .link a {
-    display: none;
+    /* display: none; */
 }
 
 table tr:hover .link a {

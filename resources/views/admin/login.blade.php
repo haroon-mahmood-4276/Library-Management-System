@@ -1,20 +1,19 @@
-@extends('Shared.Layout')
+@extends('shared.layout')
 
 @section('PageTitle', 'Admin Login')
 
 
 @section('content')
-    <div class="container  my-5 py-3" style=" background-color: #224172; color: white; border-radius: 10px;">
+    <div class="container my-5 py-3" style=" background-color: #224172; color: white; border-radius: 10px;">
 
         @if (session('Msg'))
-            <div class="alert alert-{{ session('Msg.MsgType') }} alert-dismissible fade show" role="alert">
-                <strong>{{ session('Msg.MsgD') }}
+            <div class="alert alert-{{ session('Msg.Type') }} alert-dismissible fade show" role="alert">
+                <strong>{{ session('Msg.Text') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </strong>
             </div>
-            {{ Session::forget('Msg') }}
         @endif
 
         <form action="/admin/login" method="POST">

@@ -16,7 +16,7 @@
 <body>
     <div id="app">
         <div>
-            {{ View::make('Shared.Header') }}
+            {{ View::make('shared.header') }}
         </div>
 
 
@@ -24,7 +24,7 @@
             @yield('content')
         </div>
 
-        {{  View::make('Shared.Footer') }}
+        {{  View::make('shared.footer') }}
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

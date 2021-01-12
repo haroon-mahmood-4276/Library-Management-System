@@ -29,15 +29,15 @@
             <ul class="navbar-nav ml-auto">
                 @if (session('Data.DataType') == 'Admin')
                     <li class="nav-item mx-1 {{ Request::is('admin/dashboard') ? 'active' : null }}">
-                        <a class="nav-link" href="{{ url('/admin/dashboard') }}">
+                        <a class="nav-link" href="{{ URL::to('admin/dashboard') }}">
                             <span style="color: #224172;">Dashboard</span></a>
                     </li>
-                    <li class="nav-item mx-1 {{ Request::is('admin/racks') ? 'active' : null }}">
-                        <a class="nav-link" href="{{ url('/admin/racks') }}">
+                    <li class="nav-item mx-1 {{ Request::is('racks') ? 'active' : null }}">
+                        <a class="nav-link" href="{{ URL::to('racks') }}">
                             <span style="color: #224172;">Racks</span></a>
                     </li>
                     <li class="nav-item mx-1 {{ Request::is('admin/books') ? 'active' : null }}">
-                        <a class="nav-link" href="{{ url('/admin/books') }}">
+                        <a class="nav-link" href="{{ URL::to('admin/books') }}">
                             <span style="color: #224172;">Books</span></a>
                     </li>
                 @elseif (session('Data.DataType') == 'User')
