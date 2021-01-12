@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class LMSBooks extends Model
 {
     use HasFactory;
-    protected $table = 'lms_books';
+    protected $table = 'books';
 }

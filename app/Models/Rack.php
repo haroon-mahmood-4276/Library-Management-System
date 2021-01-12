@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class LMSRacks extends Model
 {
     use HasFactory;
-    protected $table = 'lms_racks';
+    protected $table = 'racks';
 }
