@@ -36,8 +36,8 @@
                         <a class="nav-link" href="{{ URL::to('racks') }}">
                             <span style="color: #224172;">Racks</span></a>
                     </li>
-                    <li class="nav-item mx-1 {{ Request::is('admin/books') ? 'active' : null }}">
-                        <a class="nav-link" href="{{ URL::to('admin/books') }}">
+                    <li class="nav-item mx-1 {{ Request::is('books') ? 'active' : null }}">
+                        <a class="nav-link" href="{{ URL::to('books') }}">
                             <span style="color: #224172;">Books</span></a>
                     </li>
                 @elseif (session('Data.DataType') == 'User')

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 use App\Models\Rack;
-use Illuminate\Support\Facades\Session;
 
-class RackController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,22 @@ class RackController extends Controller
      */
     public function index()
     {
-        $racksData = Rack::all();
-        $racksCount = Rack::count();
 
-        if ($racksCount <= 0) {
+
+        $bookData = Book::select('id', 'title', 'author', 'published_year');
+        $bookData = $bookData->addSelect([
+            'rack_name' => Rack::select('name')->whereColumn('id', '=', 'books.rack_id')
+        ])->orderBy('rack_name')->get();
+
+        $booksCount = Rack::count();
+
+        if ($booksCount <= 0) {
             session()->put('Msg', [
                 'Type' => 'warning',
-                'Text' => 'No Racks Available'
+                'Text' => 'No Books Available'
             ]);
         }
-        return view('racks.index', ['Racks' => $racksData]);
+        return view('books.index', ['Books' => $bookData]);
     }
 
     /**
@@ -34,7 +40,8 @@ class RackController extends Controller
      */
     public function create()
     {
-        return view('racks.create');
+        $racksData = Rack::all();
+        return view('books.create', ['Racks' => $racksData]);
     }
 
     /**
@@ -45,11 +52,13 @@ class RackController extends Controller
      */
     public function store(Request $request)
     {
+        $Book = new Book;
+        $Book->rack_id = $request->cbRacks;
+        $Book->title = $request->txtBookTitle;
+        $Book->author = $request->txtBookAuthor;
+        $Book->published_year = date("Y", strtotime($request->txtBookPublishedYear));
 
-        $rack = new Rack;
-        $rack->name = $request->txtRackName;
-
-        if ($rack->save()) {
+        if ($Book->save()) {
             session()->flash('Msg', [
                 'Type' => 'success',
                 'Text' => 'Data is successfully saved.'
@@ -57,11 +66,11 @@ class RackController extends Controller
         } else {
             session()->flash('Msg', [
                 'Type' => 'danger',
-                'Text' => 'Data could not saved'
+                'Text' => 'Data could not saved.'
             ]);
         }
 
-        return redirect('racks');
+        return redirect('books');
     }
 
     /**
@@ -72,9 +81,9 @@ class RackController extends Controller
      */
     public function show($id)
     {
-        // $rack = Rack::find($id);
+        $rack = Rack::find($id);
 
-        // return view('racks.show', ['Rack' => $rack]);
+        return view('racks.show', ['Rack' => $rack]);
     }
 
     /**
@@ -85,9 +94,9 @@ class RackController extends Controller
      */
     public function edit($id)
     {
-        $rack = Rack::find($id);
-
-        return view('racks.edit', ['Rack' => $rack]);
+        $bookData = Book::find($id);
+        $racksData = Rack::all();
+        return view('books.edit', ['Book' => $bookData, 'Rack' => $racksData]);
     }
 
     /**
@@ -99,10 +108,13 @@ class RackController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rack = Rack::find($id);
-        $rack->name = $request->txtRackName;
+        $Book = Book::find($id);
+        $Book->rack_id = $request->cbRacks;
+        $Book->title = $request->txtBookTitle;
+        $Book->author = $request->txtBookAuthor;
+        $Book->published_year = date("Y", strtotime($request->txtBookPublishedYear));
 
-        if ($rack->save()) {
+        if ($Book->save()) {
             session()->flash('Msg', [
                 'Type' => 'success',
                 'Text' => 'Data is successfully saved.'
@@ -110,11 +122,11 @@ class RackController extends Controller
         } else {
             session()->flash('Msg', [
                 'Type' => 'danger',
-                'Text' => 'Data could not saved'
+                'Text' => 'Data could not saved.'
             ]);
         }
 
-        return redirect('racks');
+        return redirect('books');
     }
 
     /**
@@ -125,9 +137,9 @@ class RackController extends Controller
      */
     public function destroy($id)
     {
-        $rack = Rack::find($id);
+        $Book = Book::find($id);
 
-        if ($rack->delete()) {
+        if ($Book->delete()) {
             session()->flash('Msg', [
                 'Type' => 'success',
                 'Text' => 'Data is successfully deleted.'
@@ -135,10 +147,10 @@ class RackController extends Controller
         } else {
             session()->flash('Msg', [
                 'Type' => 'danger',
-                'Text' => 'Data could not delete'
+                'Text' => 'Data could not deleted.'
             ]);
         }
 
-        return redirect('racks');
+        return redirect('books');
     }
 }

@@ -44,3 +44,4 @@ Route::get('/admin/logout', function () {
 // Route::get('/user/books/search', [UserController::class, 'SearchBooks']);
 
 Route::resource('racks', 'RackController');
+Route::resource('books', 'BookController');
